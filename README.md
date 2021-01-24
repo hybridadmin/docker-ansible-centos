@@ -4,8 +4,8 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`latest`, `8` (*8/Dockerfile*)](https://github.com/hybridadmin/docker-centos-ansible/tree/main/8/Dockerfile)
-- [`7` (*7/Dockerfile*)](https://github.com/hybridadmin/docker-centos-ansible/tree/main/7/Dockerfile)
+- [`latest`, `8`](https://github.com/hybridadmin/docker-centos-ansible/tree/main/8/Dockerfile)
+- [`7`](https://github.com/hybridadmin/docker-centos-ansible/tree/main/7/Dockerfile)
 
 ## How to Build the image
 
