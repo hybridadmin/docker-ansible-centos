@@ -1,6 +1,6 @@
-# Centos Docker Images with ansible and systemd
+# CentOS Docker Images with ansible and systemd
 
-> Centos Docker images to be used for testing ansible playbooks and roles.
+> CentOS Docker images to be used for testing ansible playbooks and roles.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -25,7 +25,7 @@ docker pull hybridadmin/centos-ansible:latest
 
 Run a container using the image with the following command:
 ```console
-docker run -d --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro hybridadmin/centos-ansible:latest
+docker run -d --name systemd-centos --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro hybridadmin/centos-ansible:latest
 ```
 
 Use Ansible inside the container:
