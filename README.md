@@ -36,7 +36,7 @@ Run a container using the image with the following command:
 docker run -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro hybridadmin/ansible-centos:latest
 ```
 
-Use Ansible inside the container:
+Use ansible inside the container:
 ```console
 docker exec --tty [container_id] env TERM=xterm ansible --version
 docker exec --tty [container_id] env TERM=xterm ansible-playbook /path/to/playbook.yml --syntax-check
