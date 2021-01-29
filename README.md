@@ -1,5 +1,5 @@
 # CentOS Docker Images with ansible and systemd
-![Build](https://github.com/hybridadmin/docker-ansible-centos/workflows/Build/badge.svg?branch=main)
+![Build](https://github.com/hybridadmin/docker-ansible-centos/workflows/Build/badge.svg?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/ansible-centos)
 
 > CentOS Docker images to be used for testing ansible playbooks and roles.
 
