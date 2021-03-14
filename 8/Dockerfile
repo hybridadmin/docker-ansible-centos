@@ -34,6 +34,7 @@ RUN yum -y install rpm centos-release dnf-plugins-core \
  && yum clean all
 
 # Install Ansible via Pip.
+RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install $pip_packages
 
 # Disable requiretty.
