@@ -25,6 +25,7 @@ RUN yum makecache fast \
       which \
       python3 \
       python3-pip \
+      python-setuptools \
       python3-pyyaml \
  && yum clean all
 
