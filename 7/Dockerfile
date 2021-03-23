@@ -38,8 +38,8 @@ RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 # Install Ansible inventory file.
 RUN mkdir -p /etc/ansible
-RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
-RUN echo -e "[defaults]\nstdout_callback = debug\ninterpreter_python= /usr/bin/python3" >> /etc/ansible/ansible.cfg
+RUN echo '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+RUN echo '[defaults]\nstdout_callback = debug\ninterpreter_python= /usr/bin/python3' >> /etc/ansible/ansible.cfg
 
 VOLUME [ "/sys/fs/cgroup" ]
 
