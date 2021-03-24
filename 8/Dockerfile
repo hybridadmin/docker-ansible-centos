@@ -3,7 +3,7 @@ LABEL maintainer="Tinashe Chikomo <tinashe@chikomo.net>"
 
 ENV container docker
 
-ENV pip_packages "ansible"
+ENV pip_packages "ansible pymysql"
 
 RUN cd /lib/systemd/system/sysinit.target.wants/; \
     for i in *; do [ $i = systemd-tmpfiles-setup.service ] || rm -f $i; done
@@ -42,9 +42,8 @@ RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 # Install Ansible inventory file.
 RUN mkdir -p /etc/ansible
-RUN curl -fsSL https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/hosts -o /etc/ansible/hosts \
-    && curl -fsSL https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/ansible.cfg -o etc/ansible/ansible.cfg
-
+ADD https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/hosts /etc/ansible/hosts
+ADD https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/ansible.cfg etc/ansible/ansible.cfg
 
 VOLUME [ "/sys/fs/cgroup" ]
 

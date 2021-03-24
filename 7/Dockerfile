@@ -1,20 +1,19 @@
 FROM centos:7
 LABEL maintainer="Tinashe Chikomo <tinashe@chikomo.net>"
+ENV container=docker
 
-ENV container docker
+ENV pip_packages "ansible pymysql"
 
-ENV pip_packages "ansible"
-
-RUN cd /lib/systemd/system/sysinit.target.wants/; \
-    for i in *; do [ $i = systemd-tmpfiles-setup.service ] || rm -f $i; done
-
-RUN rm -f /lib/systemd/system/multi-user.target.wants/* \
-    /etc/systemd/system/*.wants/* \
-    /lib/systemd/system/local-fs.target.wants/* \
-    /lib/systemd/system/sockets.target.wants/*udev* \
-    /lib/systemd/system/sockets.target.wants/*initctl* \
-    /lib/systemd/system/basic.target.wants/* \
-    /lib/systemd/system/anaconda.target.wants/*
+# Install systemd -- See https://hub.docker.com/_/centos/
+RUN yum -y update; yum clean all; \
+(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 # Install requirements.
 RUN yum makecache fast \
@@ -22,25 +21,25 @@ RUN yum makecache fast \
  && yum -y update \
  && yum -y install \
       sudo \
+      curl \
+      wget \
       which \
-      python3 \
-      python3-pip \
       python-setuptools \
-      python3-pyyaml \
- && yum clean all
+ && yum clean all \
+ && wget https://bootstrap.pypa.io/pip/2.7/get-pip.py \
+ && python get-pip.py
 
 # Install Ansible via Pip.
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install $pip_packages
+#RUN pip install -U pip
+RUN pip install $pip_packages
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
 
 # Install Ansible inventory file.
 RUN mkdir -p /etc/ansible
-RUN curl -fsSL https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/hosts -o /etc/ansible/hosts \
-    && curl -fsSL https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/ansible.cfg -o etc/ansible/ansible.cfg
+ADD https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/hosts /etc/ansible/hosts
+ADD https://raw.githubusercontent.com/hybridadmin/misc-scripts/master/linux/ansible/ansible.cfg etc/ansible/ansible.cfg
 
-VOLUME [ "/sys/fs/cgroup" ]
-
-CMD ["/usr/sbin/init"]
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/usr/lib/systemd/systemd"]
