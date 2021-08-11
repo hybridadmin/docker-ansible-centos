@@ -1,6 +1,7 @@
 FROM centos:7
 LABEL maintainer="Tinashe Chikomo <tinashe@chikomo.net>"
 ENV container=docker
+ENV PYTHONIOENCODING=utf8
 
 ENV pip_packages "ansible pymysql"
 
