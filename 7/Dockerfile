@@ -1,7 +1,10 @@
 FROM centos:7
 LABEL maintainer="Tinashe Chikomo <tinashe@chikomo.net>"
 ENV container=docker
-ENV PYTHONIOENCODING=utf8
+
+# fix - https://githubmemory.com/repo/pypa/pip/issues/10219
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 ENV pip_packages "ansible pymysql"
 
