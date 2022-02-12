@@ -71,6 +71,15 @@ jobs:
             $(for i in $(echo ${{ matrix.distribution.tags }} | sed "s/,/ /g"); do echo "--tag hybridadmin/ansible-${{ matrix.distribution.image }}:$i "; done) \
             ${{ matrix.distribution.version }}
 
+  readme:
+    name: Readme mods
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Update Repo Readme/Description
         uses: peter-evans/dockerhub-description@v2
         with:

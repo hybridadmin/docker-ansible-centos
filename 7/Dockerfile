@@ -6,7 +6,7 @@ ENV container=docker
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-ENV pip_packages "ansible pymysql"
+ENV pip_packages "ansible yamllint ansible-lint pymysql"
 
 # Install systemd -- See https://hub.docker.com/_/centos/
 RUN yum -y update; yum clean all; \
