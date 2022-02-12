@@ -28,14 +28,13 @@ RUN yum makecache fast \
       curl \
       wget \
       which \
-      python-setuptools \
- && yum clean all \
- && wget https://bootstrap.pypa.io/pip/2.7/get-pip.py \
- && python get-pip.py
+      python3 \
+      python3-setuptools \
+ && yum clean all
 
 # Install Ansible via Pip.
-#RUN pip install -U pip
-RUN pip install $pip_packages
+RUN pip3 install -U pip
+RUN pip3 install -U $pip_packages
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
