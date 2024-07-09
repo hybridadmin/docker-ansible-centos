@@ -9,7 +9,7 @@
 - Maintained by: [hybridadmin](https://github.com/hybridadmin)
 - Where to get help: [The Docker Community Forums](https://forums.docker.com/), [Docker Community on Slack](https://dockr.ly/slack) or [Stack Overflow](https://stackoverflow.com/search?tab=newest&q=docker)
 - Where to file issues: [(issue tracker)](https://github.com/hybridadmin/docker-ansible-centos/issues) include the `docker` tag
-- Supported architectures: [(more info)](https://github.com/docker-library/official-images#architectures-other-than-amd64) `amd64`
+- Supported Arch(s): [(more info)](https://github.com/docker-library/official-images#architectures-other-than-amd64) `amd64`
 
 ## Supported tags and respective `Dockerfile` links
 
