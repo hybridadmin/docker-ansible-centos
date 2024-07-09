@@ -15,10 +15,6 @@ jobs:
       matrix:
         distribution:
           - image: centos
-            version: "7"
-            tags: "7"
-            platform: "linux/amd64"
-          - image: centos
             version: "8"
             platform: "linux/amd64"
             tags: "8,latest"
