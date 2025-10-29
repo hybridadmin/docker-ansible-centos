@@ -1,5 +1,6 @@
 FROM centos:7
 LABEL maintainer="Tinashe Chikomo <tinashe@chikomo.net>"
+
 ENV container=docker
 
 # fix - https://githubmemory.com/repo/pypa/pip/issues/10219
