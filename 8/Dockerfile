@@ -39,7 +39,8 @@ RUN yum -y install rpm centos-release dnf-plugins-core \
 
 # Install Ansible via Pip.
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install $pip_packages
+RUN python3 -m pip install $pip_packages \
+    && ansible-galaxy collection install community.general -p /usr/share/ansible/roles
 
 # Disable requiretty.
 RUN sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers
